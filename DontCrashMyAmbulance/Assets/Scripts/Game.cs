@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class Game : MonoBehaviour
 {
     [SerializeField] Button startButton;
+    [SerializeField] Button accelerateButton;
+    [SerializeField] Button brakeButton;
     [SerializeField] Ambulance ambulance;
-
-    bool hasStarted = false;
+    [SerializeField] SceneLoader sceneLoader;
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +25,14 @@ public class Game : MonoBehaviour
 
     public void StartGame()
     {
-        hasStarted = true;
-        Destroy(startButton.gameObject);
+        accelerateButton.gameObject.SetActive(true);
+        brakeButton.gameObject.SetActive(true);
+        startButton.gameObject.SetActive(false);
         ambulance.ChangeDirection(Direction.Right);
+    }
+
+    public void EndGame()
+    {
+        sceneLoader.LoadEndScene();
     }
 }
