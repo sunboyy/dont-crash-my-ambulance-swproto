@@ -6,6 +6,7 @@ public class Junction : MonoBehaviour
 {
     public Direction startArrow;
     Direction arrow;
+    Collider2D[] colliders;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,10 @@ public class Junction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         colliders = Physics2D.OverlapCircleAll(transform.position, 0.0f);
+         if (colliders.Length > 0){
+             ChangeDirection();
+         }
     }
 
     void setDirection()
@@ -60,5 +65,15 @@ public class Junction : MonoBehaviour
         }
         arrow = newArrow;
         transform.Rotate( new Vector3( 0, 0, 90 ) );
+    }
+
+    void ChangeDirection()
+    {
+        for(int i = 0; i < colliders.Length; i++) {
+            if(colliders[i].name == "Ambulance") {
+                Ambulance car = colliders[i].GetComponent<Ambulance>();
+                car.ChangeDirection(arrow);
+            }
+        }
     }
 }
