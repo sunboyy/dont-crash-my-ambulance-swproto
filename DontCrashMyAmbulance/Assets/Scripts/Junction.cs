@@ -25,6 +25,16 @@ public class Junction : MonoBehaviour
                 car.ChangeDirection(direction);
             }
         }
+        else if (collision.name.Substring(0, 3) == "car")
+        {
+            Vector2 carPosition = collision.bounds.center;
+            Vector2 junctionPosition = transform.position;
+            if (Vector2.Distance(carPosition, junctionPosition) < 0.05)
+            {
+                Car car = collision.GetComponent<Car>();
+                car.ChangeDirection(direction);
+            }
+        }
     }
 
     protected void RotateArrow()
