@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class Junction : MonoBehaviour
 {
-<<<<<<< Updated upstream
     [SerializeField] Direction direction;
 
-=======
-    [SerializeField] Direction startArrow;
-    Direction arrow;
->>>>>>> Stashed changes
     Collider2D[] colliders;
     // Start is called before the first frame update
     void Start()
@@ -74,11 +69,11 @@ public class Junction : MonoBehaviour
         for(int i = 0; i < colliders.Length; i++) {
             if(colliders[i].name == "Ambulance") {
 
-                Debug.Log(colliders[i].bounds.center);
-                Debug.Log("arrow" + transform.position);
-                if(colliders[i].bounds.center == transform.position) {
+                Vector2 carPosition = new Vector2(colliders[i].bounds.center.x,colliders[i].bounds.center.y);
+                Vector2 junctionPosition = new Vector2(transform.position.x,transform.position.y);
+                if(carPosition.x.ToString("f1") == junctionPosition.x.ToString("f1") && carPosition.y.ToString("f1") == junctionPosition.y.ToString("f1")) {
                     Ambulance car = colliders[i].GetComponent<Ambulance>();
-                    car.ChangeDirection(arrow);
+                    car.ChangeDirection(direction);
                 }
             }
         }
