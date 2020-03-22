@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Arrow : MonoBehaviour
+public class Junction : MonoBehaviour
 {
     public Direction startArrow;
     Direction arrow;
@@ -17,9 +16,6 @@ public class Arrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-           if (Input.GetMouseButton(0)) {
-                updateDirection();
-           }
     }
 
     void setDirection()
@@ -39,6 +35,10 @@ public class Arrow : MonoBehaviour
                 transform.localEulerAngles = new Vector3(0,0,0);
                 break;
         }
+    }
+
+    void OnMouseDown() {
+        updateDirection();
     }
 
     void updateDirection() {
