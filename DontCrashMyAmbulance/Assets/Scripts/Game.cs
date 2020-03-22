@@ -8,19 +8,18 @@ public class Game : MonoBehaviour
     [SerializeField] Button startButton;
     [SerializeField] Button accelerateButton;
     [SerializeField] Button brakeButton;
-    [SerializeField] Ambulance ambulance;
-    [SerializeField] Direction initialAmbulanceDirection;
+    [SerializeField] Vehicle ambulance;
     [SerializeField] Car car;
     
     public float Timer = 2;
-    Car carClone;
+    Vehicle carClone;
 
     // Update is called once per frame
     void Update()
     {
         if (carClone != null)
         {
-            carClone.ChangeDirection(Direction.Down);
+            carClone.UpdateVelocity();
         }
         Timer -= Time.deltaTime;
         if (Timer <= 0)
@@ -28,7 +27,7 @@ public class Game : MonoBehaviour
             GameObject clone;
             clone = Instantiate(car.gameObject);
             clone.transform.position = new Vector3(clone.transform.position.x, clone.transform.position.y, -5);
-            carClone = (Car)clone.gameObject.GetComponent<Car>();
+            carClone = clone.gameObject.GetComponent<Vehicle>();
             Timer = 3;
         }
     }
@@ -38,7 +37,7 @@ public class Game : MonoBehaviour
         accelerateButton.gameObject.SetActive(true);
         brakeButton.gameObject.SetActive(true);
         startButton.gameObject.SetActive(false);
-        ambulance.ChangeDirection(initialAmbulanceDirection);
+        ambulance.UpdateVelocity();
     }
 
     public void EndGame()

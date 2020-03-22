@@ -14,20 +14,14 @@ public class Junction : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Ambulance ambulance = collision.GetComponent<Ambulance>();
-        Car car = collision.GetComponent<Car>();
-
-        Vector2 vehiclePosition = collision.bounds.center;
-        Vector2 junctionPosition = transform.position;
-        if (Vector2.Distance(vehiclePosition, junctionPosition) < 0.05)
+        Vehicle vehicle = collision.GetComponent<Vehicle>();
+        if (vehicle)
         {
-            if (ambulance)
+            Vector2 vehiclePosition = collision.bounds.center;
+            Vector2 junctionPosition = transform.position;
+            if (Vector2.Distance(vehiclePosition, junctionPosition) < 0.05)
             {
-                ambulance.ChangeDirection(direction);
-            }
-            else if (car)
-            {
-                car.ChangeDirection(direction);
+                vehicle.ChangeDirection(direction);
             }
         }
     }
