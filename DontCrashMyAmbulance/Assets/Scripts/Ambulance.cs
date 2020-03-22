@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ambulance : MonoBehaviour
 {
     [SerializeField] float initialSpeed;
+    [SerializeField] float maxSpeed;
 
     float currentSpeed;
     public Direction currentDirection;
@@ -51,6 +52,10 @@ public class Ambulance : MonoBehaviour
     public void SpeedUp()
     {
         currentSpeed *= 2;
+        if (currentSpeed > maxSpeed)
+        {
+            currentSpeed = maxSpeed;
+        }
         UpdateVelocity();
     }
 

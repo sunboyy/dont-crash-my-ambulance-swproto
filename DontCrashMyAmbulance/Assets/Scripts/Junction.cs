@@ -70,7 +70,7 @@ public class Junction : MonoBehaviour
             if(colliders[i].name == "Ambulance") {
                 Vector2 carPosition = colliders[i].bounds.center;
                 Vector2 junctionPosition = transform.position;
-                if(carPosition.x.ToString("f1") == junctionPosition.x.ToString("f1") && carPosition.y.ToString("f1") == junctionPosition.y.ToString("f1")) {
+                if(Vector2.Distance(carPosition, junctionPosition) < 0.05){
                     Ambulance car = colliders[i].GetComponent<Ambulance>();
                     car.ChangeDirection(direction);
                 }
