@@ -68,9 +68,8 @@ public class Junction : MonoBehaviour
     {
         for(int i = 0; i < colliders.Length; i++) {
             if(colliders[i].name == "Ambulance") {
-
-                Vector2 carPosition = new Vector2(colliders[i].bounds.center.x,colliders[i].bounds.center.y);
-                Vector2 junctionPosition = new Vector2(transform.position.x,transform.position.y);
+                Vector2 carPosition = colliders[i].bounds.center;
+                Vector2 junctionPosition = transform.position;
                 if(carPosition.x.ToString("f1") == junctionPosition.x.ToString("f1") && carPosition.y.ToString("f1") == junctionPosition.y.ToString("f1")) {
                     Ambulance car = colliders[i].GetComponent<Ambulance>();
                     car.ChangeDirection(direction);
