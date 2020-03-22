@@ -13,13 +13,18 @@ public class Junction : MonoBehaviour
         RotateArrow();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-         colliders = Physics2D.OverlapCircleAll(transform.position, 0f);
-         if (colliders.Length > 0) {
-             UpdateCarDirection();
-         }
+        if (collision.name == "Ambulance")
+        {
+            Vector2 carPosition = collision.bounds.center;
+            Vector2 junctionPosition = transform.position;
+            if (Vector2.Distance(carPosition, junctionPosition) < 0.05)
+            {
+                Ambulance car = collision.GetComponent<Ambulance>();
+                car.ChangeDirection(direction);
+            }
+        }
     }
 
     protected void RotateArrow()
@@ -62,19 +67,5 @@ public class Junction : MonoBehaviour
                 break;
         }
         RotateArrow();
-    }
-
-    void UpdateCarDirection()
-    {
-        for(int i = 0; i < colliders.Length; i++) {
-            if(colliders[i].name == "Ambulance") {
-                Vector2 carPosition = colliders[i].bounds.center;
-                Vector2 junctionPosition = transform.position;
-                if(Vector2.Distance(carPosition, junctionPosition) < 0.05){
-                    Ambulance car = colliders[i].GetComponent<Ambulance>();
-                    car.ChangeDirection(direction);
-                }
-            }
-        }
     }
 }
