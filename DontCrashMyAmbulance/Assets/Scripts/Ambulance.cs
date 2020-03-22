@@ -8,7 +8,7 @@ public class Ambulance : MonoBehaviour
     [SerializeField] float maxSpeed;
 
     float currentSpeed;
-    public Direction currentDirection;
+    Direction currentDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,6 @@ public class Ambulance : MonoBehaviour
 
     void UpdateVelocity()
     {
-        Debug.Log(currentDirection);
         Vector2 newVelocity = Vector2.zero;
         switch (currentDirection)
         {

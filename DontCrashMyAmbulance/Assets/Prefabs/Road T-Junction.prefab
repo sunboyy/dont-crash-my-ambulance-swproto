@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &275624932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7505310876055012676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4530cb90ace358f469465bb44c4d92a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 3
+  emptyDirection: 1
+--- !u!1001 &3337020997398260807
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5073096694415223043, guid: e1114df8ad510b0419000081543bedea,
+        type: 3}
+      propertyPath: m_Name
+      value: Road Junction Bottom Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073096694415223045, guid: e1114df8ad510b0419000081543bedea,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.03969288
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073096694415223045, guid: e1114df8ad510b0419000081543bedea,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.6559067
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073096694415223045, guid: e1114df8ad510b0419000081543bedea,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 54.49181
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073096694415223045, guid: e1114df8ad510b0419000081543bedea,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073096694415223045, guid: e1114df8ad510b0419000081543bedea,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073096694415223045, guid: e1114df8ad510b0419000081543bedea,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073096694415223045, guid: e1114df8ad510b0419000081543bedea,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073096694415223045, guid: e1114df8ad510b0419000081543bedea,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073096694415223045, guid: e1114df8ad510b0419000081543bedea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073096694415223045, guid: e1114df8ad510b0419000081543bedea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073096694415223045, guid: e1114df8ad510b0419000081543bedea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 105858515, guid: e1114df8ad510b0419000081543bedea, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: e1114df8ad510b0419000081543bedea, type: 3}
+--- !u!1 &7505310876055012676 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5073096694415223043, guid: e1114df8ad510b0419000081543bedea,
+    type: 3}
+  m_PrefabInstance: {fileID: 3337020997398260807}
+  m_PrefabAsset: {fileID: 0}

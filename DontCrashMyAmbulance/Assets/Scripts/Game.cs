@@ -9,12 +9,7 @@ public class Game : MonoBehaviour
     [SerializeField] Button accelerateButton;
     [SerializeField] Button brakeButton;
     [SerializeField] Ambulance ambulance;
-    [SerializeField] SceneLoader sceneLoader;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    [SerializeField] Direction initialAmbulanceDirection;
 
     // Update is called once per frame
     void Update()
@@ -27,11 +22,11 @@ public class Game : MonoBehaviour
         accelerateButton.gameObject.SetActive(true);
         brakeButton.gameObject.SetActive(true);
         startButton.gameObject.SetActive(false);
-        ambulance.ChangeDirection(Direction.Right);
+        ambulance.ChangeDirection(initialAmbulanceDirection);
     }
 
     public void EndGame()
     {
-        sceneLoader.LoadEndScene();
+        FindObjectOfType<SceneLoader>().LoadEndScene();
     }
 }

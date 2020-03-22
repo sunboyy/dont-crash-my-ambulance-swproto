@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Junction : MonoBehaviour
 {
-    [SerializeField] Direction direction;
+    [SerializeField] protected Direction direction;
 
     Collider2D[] colliders;
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class Junction : MonoBehaviour
          }
     }
 
-    void RotateArrow()
+    protected void RotateArrow()
     {
         switch (direction)
         {
@@ -45,7 +45,7 @@ public class Junction : MonoBehaviour
         UpdateDirection();
     }
 
-    void UpdateDirection() {
+    protected virtual void UpdateDirection() {
         switch (direction)
         {
             case Direction.Up:
