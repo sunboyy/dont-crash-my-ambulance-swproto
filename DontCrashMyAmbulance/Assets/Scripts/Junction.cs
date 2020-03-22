@@ -6,7 +6,6 @@ public class Junction : MonoBehaviour
 {
     [SerializeField] protected Direction direction;
 
-    Collider2D[] colliders;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,23 +14,19 @@ public class Junction : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.name == "Ambulance")
+        Ambulance ambulance = collision.GetComponent<Ambulance>();
+        Car car = collision.GetComponent<Car>();
+
+        Vector2 vehiclePosition = collision.bounds.center;
+        Vector2 junctionPosition = transform.position;
+        if (Vector2.Distance(vehiclePosition, junctionPosition) < 0.05)
         {
-            Vector2 carPosition = collision.bounds.center;
-            Vector2 junctionPosition = transform.position;
-            if (Vector2.Distance(carPosition, junctionPosition) < 0.05)
+            if (ambulance)
             {
-                Ambulance car = collision.GetComponent<Ambulance>();
-                car.ChangeDirection(direction);
+                ambulance.ChangeDirection(direction);
             }
-        }
-        else if (collision.name.Substring(0, 3) == "car")
-        {
-            Vector2 carPosition = collision.bounds.center;
-            Vector2 junctionPosition = transform.position;
-            if (Vector2.Distance(carPosition, junctionPosition) < 0.05)
+            else if (car)
             {
-                Car car = collision.GetComponent<Car>();
                 car.ChangeDirection(direction);
             }
         }
