@@ -71,10 +71,10 @@ public class Junction : MonoBehaviour
     {
         for(int i = 0; i < colliders.Length; i++) {
             if(colliders[i].name == "Ambulance") {
-                Debug.Log(colliders[i].bounds.center);
-                Debug.Log("arrow" + transform.position);
-                // Ambulance car = colliders[i].GetComponent<Ambulance>();
-                // car.ChangeDirection(arrow);
+                // Debug.Log(colliders[i].bounds.center);
+                // Debug.Log("arrow" + transform.position);
+                Ambulance car = colliders[i].GetComponent<Ambulance>();
+                car.ChangeDirection(arrow);
             }
         }
     }
