@@ -9,7 +9,7 @@ public class TrafficStart : MonoBehaviour
     [SerializeField] Direction direction;
     [SerializeField] Color color;
 
-    float currentTimer = 1;
+    float currentTimer = 0;
     Game game;
 
     private void Start()

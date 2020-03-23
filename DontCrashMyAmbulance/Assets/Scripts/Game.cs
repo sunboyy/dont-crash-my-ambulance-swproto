@@ -15,21 +15,24 @@ public class Game : MonoBehaviour
 
     readonly float roadSize = 1.28f;
     readonly float baseVelocity = 0.256f;
+    bool hasStarted = false;
     float currentSpeed = 1;
     readonly List<Vehicle> activeVehicles = new List<Vehicle>();
     static public bool isWin = false;
 
     public void StartGame()
     {
+        hasStarted = true;
         AddActiveVehicle(ambulance);
         accelerateButton.gameObject.SetActive(true);
         brakeButton.gameObject.SetActive(true);
         startButton.gameObject.SetActive(false);
-        ambulance.Initialize(initialAmbulanceDirection, baseVelocity);
+        ambulance.Initialize(initialAmbulanceDirection, GetCurrentVelocity());
     }
 
-    public void EndGame()
+    public void EndGame(bool isWin)
     {
+        Game.isWin = isWin;
         FindObjectOfType<SceneLoader>().LoadEndScene();
     }
 
@@ -43,6 +46,11 @@ public class Game : MonoBehaviour
         activeVehicles.Remove(vehicle);
     }
 
+    public bool HasStarted()
+    {
+        return hasStarted;
+    }
+
     public float GetCurrentVelocity()
     {
         return baseVelocity * Mathf.Pow(2, currentSpeed - 1);
@@ -50,20 +58,27 @@ public class Game : MonoBehaviour
 
     public void SpeedUp()
     {
-        currentSpeed++;
-        if (currentSpeed > 3)
-        {
-            currentSpeed = 3;
-        }
-        UpdateGameSpeed();
+        SetSpeed(currentSpeed + 1);
     }
 
     public void SpeedDown()
     {
-        currentSpeed--;
-        if (currentSpeed < 1)
+        SetSpeed(currentSpeed - 1);
+    }
+
+    public void SetSpeed(float speed)
+    {
+        if (speed < 1)
         {
             currentSpeed = 1;
+        }
+        else if (speed > 5)
+        {
+            currentSpeed = 5;
+        }
+        else
+        {
+            currentSpeed = speed;
         }
         UpdateGameSpeed();
     }

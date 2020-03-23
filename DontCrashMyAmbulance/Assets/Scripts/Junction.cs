@@ -6,9 +6,12 @@ public class Junction : MonoBehaviour
 {
     [SerializeField] protected Direction direction;
 
+    Game game;
+
     // Start is called before the first frame update
     void Start()
     {
+        game = FindObjectOfType<Game>();
         RotateArrow();
     }
 
@@ -19,7 +22,7 @@ public class Junction : MonoBehaviour
         {
             Vector2 vehiclePosition = collision.bounds.center;
             Vector2 junctionPosition = transform.position;
-            if (Vector2.Distance(vehiclePosition, junctionPosition) < 0.05)
+            if (Vector2.Distance(vehiclePosition, junctionPosition) < 0.1)
             {
                 vehicle.ChangeDirection(direction);
             }
@@ -46,7 +49,10 @@ public class Junction : MonoBehaviour
     }
 
     void OnMouseDown() {
-        UpdateDirection();
+        if (game.HasStarted())
+        {
+            UpdateDirection();
+        }
     }
 
     protected virtual void UpdateDirection() {

@@ -10,8 +10,7 @@ public class Destination : MonoBehaviour
     {
         if (collision.GetComponent<Ambulance>())
         {
-            Game.isWin = true;
-            game.EndGame();
+            game.EndGame(true);
         }
     }
 }
