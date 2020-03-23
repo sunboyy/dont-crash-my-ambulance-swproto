@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Vehicle : MonoBehaviour
 {
-    [SerializeField] Direction initialDirection;
     [SerializeField] float initialSpeed;
     [SerializeField] float maxSpeed;
 
     float currentSpeed;
     Direction currentDirection;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Initialize(Direction direction)
     {
+        currentDirection = direction;
         currentSpeed = initialSpeed;
-        currentDirection = initialDirection;
+        UpdateVelocity();
     }
 
     public void UpdateVelocity()

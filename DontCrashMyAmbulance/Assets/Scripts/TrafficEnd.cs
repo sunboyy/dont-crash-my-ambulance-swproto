@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoadTrafficEnd : MonoBehaviour
+public class TrafficEnd : MonoBehaviour
 {
-    Collider2D[] colliders;
+    [SerializeField] Color color;
+
+    private void Start()
+    {
+        GetComponent<SpriteRenderer>().color = color;
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {

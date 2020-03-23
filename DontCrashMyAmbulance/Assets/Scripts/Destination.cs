@@ -8,6 +8,9 @@ public class Destination : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        game.EndGame();
+        if (collision.GetComponent<Ambulance>())
+        {
+            game.EndGame();
+        }
     }
 }
