@@ -12,6 +12,7 @@ public class Game : MonoBehaviour
     [SerializeField] Direction initialAmbulanceDirection;
     [SerializeField] float initialSpeed;
     [SerializeField] TrafficStart trafficStart;
+    [SerializeField] Text speedInterface;
 
     public float currentSpeed;
     List<Vehicle> vehicles = new List<Vehicle>();
@@ -46,8 +47,12 @@ public class Game : MonoBehaviour
         {
             newSpeed = v.SetSpeed(newSpeed);
         }
-        trafficStart.SetSpeed(currentSpeed / newSpeed);
-        currentSpeed = newSpeed;
+        if (newSpeed != currentSpeed)
+        {
+            trafficStart.SetSpeed(currentSpeed / newSpeed);
+            setSpeedInterface(newSpeed > currentSpeed);
+            currentSpeed = newSpeed;
+        }
     }
 
     public void SpeedDown()
@@ -57,7 +62,35 @@ public class Game : MonoBehaviour
         {
             newSpeed = v.SetSpeed(newSpeed);
         }
-        trafficStart.SetSpeed(currentSpeed / newSpeed);
-        currentSpeed = newSpeed;
+
+        if (newSpeed != currentSpeed)
+        {
+            trafficStart.SetSpeed(currentSpeed / newSpeed);
+            setSpeedInterface(newSpeed > currentSpeed);
+            currentSpeed = newSpeed;
+        } 
+    }
+
+    void setSpeedInterface(bool isSpeedUp)
+    {
+        print(speedInterface.text);
+        switch (speedInterface.text)
+        {
+            case "1x":
+                speedInterface.text = isSpeedUp ? "2x" : "1x";
+                break;
+            case "2x":
+                speedInterface.text = isSpeedUp ? "4x" : "1x";
+                break;
+            case "4x":
+                speedInterface.text = isSpeedUp ? "8x" : "2x";
+                break;
+            case "8x":
+                speedInterface.text = isSpeedUp ? "16x" : "4x";
+                break;
+            case "16x":
+                speedInterface.text = isSpeedUp ? "16x" : "8x";
+                break;
+        }
     }
 }
