@@ -55,6 +55,7 @@ public class Junction : MonoBehaviour
         }
     }
 
+
     protected virtual void UpdateDirection() {
         switch (direction)
         {

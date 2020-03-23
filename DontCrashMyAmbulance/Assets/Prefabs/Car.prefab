@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 918990385725602802}
   - component: {fileID: 918990385725602815}
   - component: {fileID: 918990385725602814}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,9 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c78ddf7c18719a48ba65a09f7dcee04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDirection: 1
-  initialSpeed: 0.256
-  maxSpeed: 4
 --- !u!114 &918990385725602814
 MonoBehaviour:
   m_ObjectHideFlags: 0

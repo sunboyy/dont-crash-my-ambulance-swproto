@@ -2656,6 +2656,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ambulance
       objectReference: {fileID: 0}
+    - target: {fileID: 2077236559576906093, guid: fcb3a59f9b4ffa74ea03f29309928804,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcb3a59f9b4ffa74ea03f29309928804, type: 3}
 --- !u!1001 &2357616045607949457
