@@ -10,10 +10,10 @@ public class Vehicle : MonoBehaviour
     float currentSpeed;
     Direction currentDirection;
 
-    public void Initialize(Direction direction)
+    public void Initialize(Direction direction, float speed)
     {
         currentDirection = direction;
-        currentSpeed = initialSpeed;
+        currentSpeed = speed;
         UpdateVelocity();
     }
 
@@ -67,5 +67,23 @@ public class Vehicle : MonoBehaviour
             currentSpeed = initialSpeed;
         }
         UpdateVelocity();
+    }
+
+    public float SetSpeed(float speed)
+    {
+        if (speed < initialSpeed)
+        {
+            currentSpeed = initialSpeed;
+        } 
+        else if (speed > maxSpeed)
+        {
+            currentSpeed = maxSpeed;
+        }
+        else
+        {
+            currentSpeed = speed;
+        }
+        UpdateVelocity();
+        return currentSpeed;
     }
 }

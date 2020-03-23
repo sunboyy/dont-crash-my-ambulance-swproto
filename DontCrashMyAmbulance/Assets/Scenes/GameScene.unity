@@ -290,7 +290,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1753406985}
+      - m_Target: {fileID: 1471882944}
         m_MethodName: SpeedDown
         m_Mode: 1
         m_Arguments:
@@ -1175,6 +1175,7 @@ MonoBehaviour:
   spawnInterval: 3
   direction: 1
   color: {r: 0.9450981, g: 0.7137255, b: 0.3254902, a: 1}
+  game: {fileID: 1471882944}
 --- !u!212 &797497631
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2083,6 +2084,9 @@ MonoBehaviour:
   brakeButton: {fileID: 19538978}
   ambulance: {fileID: 1753406985}
   initialAmbulanceDirection: 1
+  initialSpeed: 0.256
+  trafficStart: {fileID: 797497630}
+  currentSpeed: 0
 --- !u!4 &1471882945
 Transform:
   m_ObjectHideFlags: 0
@@ -2179,7 +2183,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1753406985}
+      - m_Target: {fileID: 1471882944}
         m_MethodName: SpeedUp
         m_Mode: 1
         m_Arguments:

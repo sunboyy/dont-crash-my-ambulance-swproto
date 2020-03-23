@@ -8,6 +8,7 @@ public class TrafficStart : MonoBehaviour
     [SerializeField] float spawnInterval = 3f;
     [SerializeField] Direction direction;
     [SerializeField] Color color;
+    [SerializeField] Game game;
 
     float currentTimer = 1;
 
@@ -24,9 +25,15 @@ public class TrafficStart : MonoBehaviour
         {
             GameObject carObject = Instantiate(carPrefab, new Vector3(transform.position.x, transform.position.y, -2), Quaternion.identity);
             Vehicle vehicle = carObject.GetComponent<Vehicle>();
+            game.AddActiveVehicle(vehicle);
             vehicle.GetComponent<SpriteRenderer>().color = color;
-            vehicle.Initialize(direction);
+            vehicle.Initialize(direction, game.currentSpeed);
             currentTimer = spawnInterval;
         }
+    }
+
+    public void SetSpeed(float v)
+    {
+        spawnInterval = spawnInterval * v;
     }
 }
