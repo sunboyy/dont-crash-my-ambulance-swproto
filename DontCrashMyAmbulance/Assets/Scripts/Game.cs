@@ -17,6 +17,7 @@ public class Game : MonoBehaviour
     readonly float baseVelocity = 0.256f;
     float currentSpeed = 1;
     readonly List<Vehicle> activeVehicles = new List<Vehicle>();
+    static public bool isWin = false;
 
     public void StartGame()
     {

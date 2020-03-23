@@ -18,6 +18,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadEndScene()
     {
+        Debug.Log(Game.isWin);
         SceneManager.LoadScene("EndScene");
     }
 }
