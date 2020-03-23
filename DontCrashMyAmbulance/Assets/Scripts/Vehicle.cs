@@ -38,6 +38,11 @@ public class Vehicle : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = newVelocity;
     }
 
+    public Direction GetDirection()
+    {
+        return currentDirection;
+    }
+
     public void ChangeDirection(Direction direction)
     {
         currentDirection = direction;
