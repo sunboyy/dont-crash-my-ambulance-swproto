@@ -5,16 +5,17 @@ using UnityEngine;
 public class TrafficStart : MonoBehaviour
 {
     [SerializeField] GameObject carPrefab;
-    [SerializeField] float spawnInterval = 3f;
+    [SerializeField] float spawnInterval = 5f;
     [SerializeField] Direction direction;
     [SerializeField] Color color;
-    [SerializeField] Game game;
 
     float currentTimer = 1;
+    Game game;
 
     private void Start()
     {
         GetComponent<SpriteRenderer>().color = color;
+        game = FindObjectOfType<Game>();
     }
 
     // Update is called once per frame
@@ -27,13 +28,14 @@ public class TrafficStart : MonoBehaviour
             Vehicle vehicle = carObject.GetComponent<Vehicle>();
             game.AddActiveVehicle(vehicle);
             vehicle.GetComponent<SpriteRenderer>().color = color;
-            vehicle.Initialize(direction, game.currentSpeed);
+            vehicle.Initialize(direction, game.GetCurrentVelocity());
             currentTimer = spawnInterval;
         }
     }
 
-    public void SetSpeed(float v)
+    public void SetSpawnInterval(float interval)
     {
-        spawnInterval = spawnInterval * v;
+        currentTimer *= interval / spawnInterval;
+        spawnInterval = interval;
     }
 }

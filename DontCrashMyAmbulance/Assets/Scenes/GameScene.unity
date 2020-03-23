@@ -244,8 +244,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -502.5, y: 70}
-  m_SizeDelta: {x: 75, y: 60}
+  m_AnchoredPosition: {x: -480, y: 70}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &19538978
 MonoBehaviour:
@@ -492,6 +492,7 @@ GameObject:
   - component: {fileID: 306150547}
   - component: {fileID: 306150546}
   - component: {fileID: 306150545}
+  - component: {fileID: 306150548}
   m_Layer: 0
   m_Name: Traffic End
   m_TagString: Untagged
@@ -577,6 +578,32 @@ Transform:
   m_Father: {fileID: 907585400}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &306150548
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306150544}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 0.2}
+  m_EdgeRadius: 0
 --- !u!1 &361777382
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,7 +865,7 @@ GameObject:
   - component: {fileID: 466429529}
   - component: {fileID: 466429528}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Speed Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -858,10 +885,10 @@ RectTransform:
   m_Father: {fileID: 834368310}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 240, y: -215.65}
-  m_SizeDelta: {x: 81.5, y: 30}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -360, y: 70}
+  m_SizeDelta: {x: 150, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &466429528
 MonoBehaviour:
@@ -883,20 +910,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Speed:
-
-'
+  m_Text: 'Speed: 1x'
 --- !u!222 &466429529
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1251,10 +1276,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carPrefab: {fileID: 918990385725602805, guid: 8f19731a2b178d34f80d95454000a6dc,
     type: 3}
-  spawnInterval: 3
+  spawnInterval: 5
   direction: 1
   color: {r: 0.9450981, g: 0.7137255, b: 0.3254902, a: 1}
-  game: {fileID: 1471882944}
 --- !u!212 &797497631
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1414,7 +1438,6 @@ RectTransform:
   - {fileID: 1517129451}
   - {fileID: 19538977}
   - {fileID: 466429527}
-  - {fileID: 1781261871}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1541,7 +1564,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -2163,12 +2186,10 @@ MonoBehaviour:
   startButton: {fileID: 361777384}
   accelerateButton: {fileID: 1517129452}
   brakeButton: {fileID: 19538978}
+  speedText: {fileID: 466429528}
   ambulance: {fileID: 1753406985}
   initialAmbulanceDirection: 1
-  initialSpeed: 0.256
   trafficStart: {fileID: 797497630}
-  speedInterface: {fileID: 1781261872}
-  currentSpeed: 0
 --- !u!4 &1471882945
 Transform:
   m_ObjectHideFlags: 0
@@ -2219,8 +2240,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -256.7, y: 70}
-  m_SizeDelta: {x: 75, y: 60}
+  m_AnchoredPosition: {x: -250, y: 70}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1517129452
 MonoBehaviour:
@@ -2665,8 +2686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c78ddf7c18719a48ba65a09f7dcee04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpeed: 0.256
-  maxSpeed: 4
 --- !u!1001 &1760972517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2818,83 +2837,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777922121}
-  m_CullTransparentMesh: 0
---- !u!1 &1781261870
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1781261871}
-  - component: {fileID: 1781261873}
-  - component: {fileID: 1781261872}
-  m_Layer: 5
-  m_Name: Speed
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1781261871
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781261870}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 834368310}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 308, y: -215.8}
-  m_SizeDelta: {x: 47.7, y: 30.3}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1781261872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781261870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
-    m_Alignment: 3
-    m_AlignByGeometry: 0
-    m_RichText: 0
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 1x
---- !u!222 &1781261873
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781261870}
   m_CullTransparentMesh: 0
 --- !u!1001 &1823304159
 PrefabInstance:
@@ -3221,7 +3163,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2

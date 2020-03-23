@@ -6,9 +6,12 @@ public class TrafficEnd : MonoBehaviour
 {
     [SerializeField] Color color;
 
+    Game game;
+
     private void Start()
     {
         GetComponent<SpriteRenderer>().color = color;
+        game = FindObjectOfType<Game>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -16,6 +19,7 @@ public class TrafficEnd : MonoBehaviour
         Car car = collision.GetComponent<Car>();
         if (car)
         {
+            game.RemoveActiveVehicle(collision.GetComponent<Vehicle>());
             Destroy(car.gameObject);
         }
     }

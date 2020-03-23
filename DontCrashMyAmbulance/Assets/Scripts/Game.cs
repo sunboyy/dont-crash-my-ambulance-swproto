@@ -8,26 +8,23 @@ public class Game : MonoBehaviour
     [SerializeField] Button startButton;
     [SerializeField] Button accelerateButton;
     [SerializeField] Button brakeButton;
+    [SerializeField] Text speedText;
     [SerializeField] Vehicle ambulance;
     [SerializeField] Direction initialAmbulanceDirection;
-    [SerializeField] float initialSpeed;
     [SerializeField] TrafficStart trafficStart;
-    [SerializeField] Text speedInterface;
 
-    public float currentSpeed;
-    List<Vehicle> vehicles = new List<Vehicle>();
+    readonly float roadSize = 1.28f;
+    readonly float baseVelocity = 0.256f;
+    float currentSpeed = 1;
+    readonly List<Vehicle> activeVehicles = new List<Vehicle>();
 
-    void Start()
-    {
-        currentSpeed = initialSpeed;
-    }
     public void StartGame()
     {
         AddActiveVehicle(ambulance);
         accelerateButton.gameObject.SetActive(true);
         brakeButton.gameObject.SetActive(true);
         startButton.gameObject.SetActive(false);
-        ambulance.Initialize(initialAmbulanceDirection, currentSpeed);
+        ambulance.Initialize(initialAmbulanceDirection, baseVelocity);
     }
 
     public void EndGame()
@@ -37,60 +34,48 @@ public class Game : MonoBehaviour
 
     public void AddActiveVehicle(Vehicle vehicle)
     {
-        vehicles.Add(vehicle);
+        activeVehicles.Add(vehicle);
+    }
+
+    public void RemoveActiveVehicle(Vehicle vehicle)
+    {
+        activeVehicles.Remove(vehicle);
+    }
+
+    public float GetCurrentVelocity()
+    {
+        return baseVelocity * Mathf.Pow(2, currentSpeed - 1);
     }
 
     public void SpeedUp()
     {
-        float newSpeed = currentSpeed * 2;
-        foreach (Vehicle v in vehicles)
+        currentSpeed++;
+        if (currentSpeed > 3)
         {
-            newSpeed = v.SetSpeed(newSpeed);
+            currentSpeed = 3;
         }
-        if (newSpeed != currentSpeed)
-        {
-            trafficStart.SetSpeed(currentSpeed / newSpeed);
-            setSpeedInterface(newSpeed > currentSpeed);
-            currentSpeed = newSpeed;
-        }
+        UpdateGameSpeed();
     }
 
     public void SpeedDown()
     {
-        float newSpeed = currentSpeed / 2;
-        foreach (Vehicle v in vehicles)
+        currentSpeed--;
+        if (currentSpeed < 1)
         {
-            newSpeed = v.SetSpeed(newSpeed);
+            currentSpeed = 1;
         }
-
-        if (newSpeed != currentSpeed)
-        {
-            trafficStart.SetSpeed(currentSpeed / newSpeed);
-            setSpeedInterface(newSpeed > currentSpeed);
-            currentSpeed = newSpeed;
-        } 
+        UpdateGameSpeed();
     }
 
-    void setSpeedInterface(bool isSpeedUp)
+    void UpdateGameSpeed()
     {
-        print(speedInterface.text);
-        switch (speedInterface.text)
+        float speedMultiplier = Mathf.Pow(2, currentSpeed - 1);
+        float newVelocity = baseVelocity * speedMultiplier;
+        foreach (Vehicle v in activeVehicles)
         {
-            case "1x":
-                speedInterface.text = isSpeedUp ? "2x" : "1x";
-                break;
-            case "2x":
-                speedInterface.text = isSpeedUp ? "4x" : "1x";
-                break;
-            case "4x":
-                speedInterface.text = isSpeedUp ? "8x" : "2x";
-                break;
-            case "8x":
-                speedInterface.text = isSpeedUp ? "16x" : "4x";
-                break;
-            case "16x":
-                speedInterface.text = isSpeedUp ? "16x" : "8x";
-                break;
+            v.SetSpeed(newVelocity);
         }
+        trafficStart.SetSpawnInterval(roadSize / newVelocity);
+        speedText.text = string.Format("Speed: {0}x", speedMultiplier);
     }
 }

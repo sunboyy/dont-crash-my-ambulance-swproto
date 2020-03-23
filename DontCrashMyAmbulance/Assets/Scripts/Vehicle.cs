@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Vehicle : MonoBehaviour
 {
-    [SerializeField] float initialSpeed;
-    [SerializeField] float maxSpeed;
-
     float currentSpeed;
     Direction currentDirection;
 
@@ -49,41 +46,9 @@ public class Vehicle : MonoBehaviour
         UpdateVelocity();
     }
 
-    public void SpeedUp()
+    public void SetSpeed(float speed)
     {
-        currentSpeed *= 2;
-        if (currentSpeed > maxSpeed)
-        {
-            currentSpeed = maxSpeed;
-        }
+        currentSpeed = speed;
         UpdateVelocity();
-    }
-
-    public void SpeedDown()
-    {
-        currentSpeed /= 2;
-        if (currentSpeed < initialSpeed)
-        {
-            currentSpeed = initialSpeed;
-        }
-        UpdateVelocity();
-    }
-
-    public float SetSpeed(float speed)
-    {
-        if (speed < initialSpeed)
-        {
-            currentSpeed = initialSpeed;
-        } 
-        else if (speed > maxSpeed)
-        {
-            currentSpeed = maxSpeed;
-        }
-        else
-        {
-            currentSpeed = speed;
-        }
-        UpdateVelocity();
-        return currentSpeed;
     }
 }
