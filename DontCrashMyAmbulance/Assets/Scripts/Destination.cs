@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Destination : MonoBehaviour
 {
-    [SerializeField] Game game;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Ambulance>())
         {
-            game.EndGame(true);
+            FindObjectOfType<Game>().EndGame(true);
         }
     }
 }

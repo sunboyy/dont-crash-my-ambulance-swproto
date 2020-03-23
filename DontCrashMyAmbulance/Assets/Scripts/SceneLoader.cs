@@ -11,9 +11,9 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("MenuScene");
     }
 
-    public void LoadLevel()
+    public void LoadLevel(int level)
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(string.Format("Level{0}", level));
     }
 
     public void LoadEndScene()
