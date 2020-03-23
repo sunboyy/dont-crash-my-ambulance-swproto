@@ -8,14 +8,16 @@ public class InitialGameAnimator : MonoBehaviour
     [SerializeField] float animationTimer;
     [SerializeField] Button startButton;
 
-    private void Start()
-    {
-        FindObjectOfType<Game>().SetSpeed(10f);
-    }
+    bool isStarted = false;
 
     // Update is called once per frame
     void Update()
     {
+        if (!isStarted)
+        {
+            FindObjectOfType<Game>().SetSpeed(10f);
+            isStarted = true;
+        }
         animationTimer -= Time.deltaTime;
         if (animationTimer <= 0)
         {

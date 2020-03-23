@@ -11,13 +11,13 @@ public class Game : MonoBehaviour
     [SerializeField] Text speedText;
     [SerializeField] Vehicle ambulance;
     [SerializeField] Direction initialAmbulanceDirection;
-    [SerializeField] TrafficStart trafficStart;
 
     readonly float roadSize = 1.28f;
     readonly float baseVelocity = 0.256f;
     bool hasStarted = false;
     float currentSpeed = 1;
     readonly List<Vehicle> activeVehicles = new List<Vehicle>();
+    readonly List<TrafficStart> trafficStarts = new List<TrafficStart>();
     static public bool isWin = false;
 
     public void StartGame()
@@ -44,6 +44,11 @@ public class Game : MonoBehaviour
     public void RemoveActiveVehicle(Vehicle vehicle)
     {
         activeVehicles.Remove(vehicle);
+    }
+
+    public void RegisterTraffic(TrafficStart trafficStart)
+    {
+        trafficStarts.Add(trafficStart);
     }
 
     public bool HasStarted()
@@ -91,7 +96,10 @@ public class Game : MonoBehaviour
         {
             v.SetSpeed(newVelocity);
         }
-        trafficStart.SetSpawnInterval(roadSize / newVelocity);
+        foreach (TrafficStart trafficStart in trafficStarts)
+        {
+            trafficStart.SetSpawnInterval(roadSize / newVelocity);
+        }
         speedText.text = string.Format("Speed: {0}x", speedMultiplier);
     }
 }
