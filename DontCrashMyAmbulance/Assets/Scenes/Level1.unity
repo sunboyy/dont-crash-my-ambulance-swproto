@@ -1833,21 +1833,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 2077236559576906091, guid: fcb3a59f9b4ffa74ea03f29309928804,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2077236559576906091, guid: fcb3a59f9b4ffa74ea03f29309928804,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2077236559576906091, guid: fcb3a59f9b4ffa74ea03f29309928804,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2077236559576906093, guid: fcb3a59f9b4ffa74ea03f29309928804,
         type: 3}
       propertyPath: m_Name
