@@ -19,7 +19,6 @@ public class Car : MonoBehaviour
             Vector2 junctionPosition = transform.position;
             if (Vector2.Distance(vehiclePosition, junctionPosition) < distance)
             {
-                print(1);
                 FindObjectOfType<Game>().EndGame(false);
             }
         }
@@ -30,16 +29,13 @@ public class Car : MonoBehaviour
         Car car = collision.GetComponent<Car>();
         if (car)
         {
-            print("check");
             Vector2 vehiclePosition = collision.bounds.center;
             Vector2 junctionPosition = transform.position;
 
             if (Vector2.Distance(vehiclePosition, junctionPosition) < distance)
             {
-                print("check1");
                 if (GetComponent<SpriteRenderer>().color != car.GetComponent<SpriteRenderer>().color)
                 {
-                    print(2);
                     FindObjectOfType<Game>().EndGame(false);
                 }
                 else
@@ -48,7 +44,6 @@ public class Car : MonoBehaviour
                     Vehicle otherVehicle = collision.GetComponent<Vehicle>();
                     if (isInverseDirection(vehicle.GetDirection(), otherVehicle.GetDirection()) || isInverseDirection(otherVehicle.GetDirection(), vehicle.GetDirection()))
                     {
-                        print(3);
                         FindObjectOfType<Game>().EndGame(false);
                     }
                 }
