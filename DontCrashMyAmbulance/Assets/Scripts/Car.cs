@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
-    private float distance = 1f;
+    float distance = 1f;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        checkCollisionAmbulance(collision);
-        checkCollisionCars(collision);
+        CheckAmbulanceCollision(collision);
+        CheckCarCollision(collision);
     }
 
-    private void checkCollisionAmbulance(Collider2D collision)
+    private void CheckAmbulanceCollision(Collider2D collision)
     {
         if (collision.GetComponent<Ambulance>())
         {
@@ -24,7 +25,7 @@ public class Car : MonoBehaviour
         }
     }
 
-    private void checkCollisionCars(Collider2D collision)
+    private void CheckCarCollision(Collider2D collision)
     {
         Car car = collision.GetComponent<Car>();
         if (car)
@@ -42,7 +43,7 @@ public class Car : MonoBehaviour
                 {
                     Vehicle vehicle = GetComponent<Vehicle>();
                     Vehicle otherVehicle = collision.GetComponent<Vehicle>();
-                    if (isInverseDirection(vehicle.GetDirection(), otherVehicle.GetDirection()) || isInverseDirection(otherVehicle.GetDirection(), vehicle.GetDirection()))
+                    if (vehicle.GetDirection() == OppositeOf(otherVehicle.GetDirection()))
                     {
                         FindObjectOfType<Game>().EndGame(false);
                     }
@@ -51,12 +52,19 @@ public class Car : MonoBehaviour
         }
     }
 
-    private bool isInverseDirection(Direction d1, Direction d2)
+    Direction OppositeOf(Direction direction)
     {
-        if ((d1 == Direction.Up && d2 == Direction.Down) || (d1 == Direction.Left && d2 == Direction.Right))
+        switch (direction)
         {
-            return true;
+            case Direction.Up:
+                return Direction.Down;
+            case Direction.Down:
+                return Direction.Up;
+            case Direction.Left:
+                return Direction.Right;
+            case Direction.Right:
+                return Direction.Left;
         }
-        return false;
+        return Direction.Up;
     }
 }
