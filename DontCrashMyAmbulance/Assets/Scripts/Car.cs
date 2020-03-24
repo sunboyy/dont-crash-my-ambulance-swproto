@@ -8,8 +8,7 @@ public class Car : MonoBehaviour
     {
         if (collision.GetComponent<Ambulance>())
         {
-            Game.isWin = false;
-            FindObjectOfType<SceneLoader>().LoadEndScene();
+            FindObjectOfType<Game>().EndGame(false);
         }
     }
 }
