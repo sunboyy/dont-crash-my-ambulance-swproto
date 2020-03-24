@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Junction : MonoBehaviour
 {
     [SerializeField] protected Direction direction;
+    [SerializeField] Direction[] bannedDirections;
 
     Game game;
 
@@ -71,6 +73,10 @@ public class Junction : MonoBehaviour
             case Direction.Right:
                 direction = Direction.Down;
                 break;
+        }
+        if (Array.IndexOf<Direction>(bannedDirections, direction) >= 0)
+        {
+            UpdateDirection();
         }
         RotateArrow();
     }
