@@ -60,16 +60,16 @@ public class Junction : MonoBehaviour
         switch (direction)
         {
             case Direction.Up:
-                direction = Direction.Left;
-                break;
-            case Direction.Down:
                 direction = Direction.Right;
                 break;
+            case Direction.Down:
+                direction = Direction.Left;
+                break;
             case Direction.Left:
-                direction = Direction.Down;
+                direction = Direction.Up;
                 break;
             case Direction.Right:
-                direction = Direction.Up;
+                direction = Direction.Down;
                 break;
         }
         RotateArrow();

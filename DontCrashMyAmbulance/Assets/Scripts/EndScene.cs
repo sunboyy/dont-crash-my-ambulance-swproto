@@ -9,15 +9,12 @@ public class EndScene : MonoBehaviour
     [SerializeField] Text status;
     void Start()
     {
-        status.text = "You Lose!";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(Game.isWin) {
+        if (Game.isWin)
+        {
             status.text = "You Win!";
-        } else {
+        }
+        else
+        {
             status.text = "You Lose!";
         }
     }
