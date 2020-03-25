@@ -16,14 +16,11 @@ public class Game : MonoBehaviour
     readonly float baseVelocity = 0.256f;
     bool hasStarted = false;
     float currentSpeed = 1;
-    readonly List<Vehicle> activeVehicles = new List<Vehicle>();
-    readonly List<TrafficStart> trafficStarts = new List<TrafficStart>();
     static public bool isWin = false;
 
     public void StartGame()
     {
         hasStarted = true;
-        AddActiveVehicle(ambulance);
         accelerateButton.gameObject.SetActive(true);
         brakeButton.gameObject.SetActive(true);
         startButton.gameObject.SetActive(false);
@@ -34,21 +31,6 @@ public class Game : MonoBehaviour
     {
         Game.isWin = isWin;
         FindObjectOfType<SceneLoader>().LoadEndScene();
-    }
-
-    public void AddActiveVehicle(Vehicle vehicle)
-    {
-        activeVehicles.Add(vehicle);
-    }
-
-    public void RemoveActiveVehicle(Vehicle vehicle)
-    {
-        activeVehicles.Remove(vehicle);
-    }
-
-    public void RegisterTraffic(TrafficStart trafficStart)
-    {
-        trafficStarts.Add(trafficStart);
     }
 
     public bool HasStarted()
@@ -77,9 +59,9 @@ public class Game : MonoBehaviour
         {
             currentSpeed = 1;
         }
-        else if (speed > 5)
+        else if (speed > 6)
         {
-            currentSpeed = 5;
+            currentSpeed = 6;
         }
         else
         {
@@ -91,15 +73,7 @@ public class Game : MonoBehaviour
     void UpdateGameSpeed()
     {
         float speedMultiplier = Mathf.Pow(2, currentSpeed - 1);
-        float newVelocity = baseVelocity * speedMultiplier;
-        foreach (Vehicle v in activeVehicles)
-        {
-            v.SetSpeed(newVelocity);
-        }
-        foreach (TrafficStart trafficStart in trafficStarts)
-        {
-            trafficStart.SetSpawnInterval(roadSize / newVelocity);
-        }
+        Time.timeScale = speedMultiplier;
         speedText.text = string.Format("Speed: {0}x", speedMultiplier);
     }
 }

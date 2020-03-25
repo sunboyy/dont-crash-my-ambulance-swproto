@@ -775,7 +775,7 @@ PrefabInstance:
     - target: {fileID: 608909089441718518, guid: ae02319e46d484b4e9068de3d35590a7,
         type: 3}
       propertyPath: animationTimer
-      value: 4
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 608909089441718519, guid: ae02319e46d484b4e9068de3d35590a7,
         type: 3}

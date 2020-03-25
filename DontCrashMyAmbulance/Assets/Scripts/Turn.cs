@@ -33,7 +33,7 @@ public class Turn : MonoBehaviour
         {
             Vector2 vehiclePosition = collision.bounds.center;
             Vector2 junctionPosition = transform.position;
-            if (Vector2.Distance(vehiclePosition, junctionPosition) < 0.1)
+            if (Vector2.Distance(vehiclePosition, junctionPosition) < 0.05)
             {
                 if (vehicle.GetDirection() == OppositeOf(primaryDirection))
                 {

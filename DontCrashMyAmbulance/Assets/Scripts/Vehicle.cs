@@ -45,10 +45,4 @@ public class Vehicle : MonoBehaviour
         currentDirection = direction;
         UpdateVelocity();
     }
-
-    public void SetSpeed(float speed)
-    {
-        currentSpeed = speed;
-        UpdateVelocity();
-    }
 }

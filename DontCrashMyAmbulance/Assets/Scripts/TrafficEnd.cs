@@ -35,7 +35,6 @@ public class TrafficEnd : MonoBehaviour
         Car car = collision.GetComponent<Car>();
         if (car)
         {
-            game.RemoveActiveVehicle(collision.GetComponent<Vehicle>());
             Destroy(car.gameObject);
         }
     }

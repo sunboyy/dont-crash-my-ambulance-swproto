@@ -8,9 +8,9 @@ public class TrafficStart : MonoBehaviour
     [SerializeField] Direction direction;
     [SerializeField] Color color;
 
+    float carVelocity = 0.256f;
     float spawnInterval = 5f;
     float currentTimer = 0;
-    Game game;
 
     private void Start()
     {
@@ -30,8 +30,6 @@ public class TrafficStart : MonoBehaviour
                 break;
         }
         GetComponent<SpriteRenderer>().color = color;
-        game = FindObjectOfType<Game>();
-        game.RegisterTraffic(this);
     }
 
     // Update is called once per frame
@@ -49,14 +47,7 @@ public class TrafficStart : MonoBehaviour
     {
         GameObject carObject = Instantiate(carPrefab, new Vector3(transform.position.x, transform.position.y, -2), Quaternion.identity);
         Vehicle vehicle = carObject.GetComponent<Vehicle>();
-        game.AddActiveVehicle(vehicle);
         vehicle.GetComponent<SpriteRenderer>().color = color;
-        vehicle.Initialize(direction, game.GetCurrentVelocity());
-    }
-
-    public void SetSpawnInterval(float interval)
-    {
-        currentTimer *= interval / spawnInterval;
-        spawnInterval = interval;
+        vehicle.Initialize(direction, carVelocity);
     }
 }
